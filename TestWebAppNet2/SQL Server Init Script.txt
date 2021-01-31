@@ -1,0 +1,96 @@
+-- SQL Server init script
+
+CREATE TABLE users (
+	user_id INTEGER NOT NULL PRIMARY KEY IDENTITY(1,1),
+	username VARCHAR(20) NOT NULL,
+	firstname VARCHAR(100) NOT NULL,
+	surname VARCHAR(100) NOT NULL,
+	address_type CHAR(1) NULL,
+	street_address VARCHAR(500) NULL,
+	suburb VARCHAR(50) NULL,
+	city VARCHAR(50) NULL,
+	postal_code VARCHAR(10) NULL
+);
+
+CREATE TABLE products (
+	product_id INTEGER NOT NULL PRIMARY KEY IDENTITY(1,1),
+	title VARCHAR(200) NOT NULL,
+	description VARCHAR(1000) NOT NULL,
+	price DECIMAL(18,2) NOT NULL,
+	image_path VARCHAR(500) NOT NULL
+);
+
+CREATE TABLE user_basket (
+	user_basket_id INTEGER NOT NULL PRIMARY KEY IDENTITY(1,1),
+	user_id INTEGER NOT NULL,
+	product_id INTEGER NOT NULL,
+	quantity INTEGER NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES users(user_id),
+	FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+
+INSERT INTO users (username, firstname, surname, address_type, street_address, suburb, city, postal_code)
+VALUES  ('gvntri005', 'Trinesan', 'Govender', 'R', '7 Cotswold Drive', 'Shallcross', 'Durban', '4093'),
+        ('gvnsue001', 'Suendharan', 'Govender', 'R', '8 Cotswold Drive', 'Shallcross', 'Durban', '4093'),
+        ('gvnpre002', 'Prem', 'Govender', 'B', '9 Cotswold Drive', 'Shallcross', 'Durban', '4093');
+																
+INSERT INTO products (title, description, price, image_path)
+VALUES  ('Pencil', 'aaa', 1.00, '/product_images/pencil.jpg'),
+        ('Pen', 'qqq', 2.00, '/product_images/pen.jpg'),
+        ('Erasor', 'www', 3.00, '/product_images/erasor.jpg'),
+        ('Ruler', 'eee', 4.00, '/product_images/ruler.jpg'),
+        ('Paper', 'sss', 5.00, '/product_images/paper.jpg'),
+        ('Clipboard', 'ddd', 6.00, '/product_images/clipboard.jpg'),
+        ('File', 'zzz', 7.00, '/product_images/file.jpg'),
+        ('Book', 'xxx', 8.00, '/product_images/book.jpg'),
+        ('Scissors', 'ccc', 9.00, '/product_images/scissors.jpg'),
+        ('Tippex', 'vvv', 10.00, '/product_images/tippex.jpg');
+																
+INSERT INTO user_basket (user_id, product_id, quantity)
+VALUES  (1, 1, 5),
+		(1, 3, 7),
+		(1, 5, 9);
+																	
+
+CREATE VIEW v_user_basket
+AS 
+    SELECT 
+        user_basket_id, 
+        user_id,
+        products.product_id, 
+        title, 
+        description, 
+        image_path,
+        price, 
+        quantity, 
+        price * quantity AS total 
+    FROM 
+            user_basket 
+        INNER JOIN 
+            products 
+        ON 
+            products.product_id = user_basket.product_id 
+    WHERE 
+        quantity > 0 ;
+
+CREATE FUNCTION GetTotalForUser(@p_user_id INTEGER) RETURNS DECIMAL(10,2)
+AS
+BEGIN
+    DECLARE @total DECIMAL(10,2);
+    SELECT
+        @total = SUM(total)
+    FROM
+		v_user_basket
+    WHERE
+		user_id = @p_user_id;
+    RETURN(@total);
+END;
+
+CREATE PROCEDURE DeleteAllForUser @p_user_id INTEGER
+AS
+BEGIN
+    DELETE FROM user_basket
+    WHERE
+        user_id = @p_user_id;
+END;
