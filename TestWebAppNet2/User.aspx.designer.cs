@@ -15,15 +15,6 @@ namespace TestWebAppNet2
     {
 
         /// <summary>
-        /// subheading control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl subheading;
-
-        /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
@@ -31,6 +22,15 @@ namespace TestWebAppNet2
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+
+        /// <summary>
+        /// subheading control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl subheading;
 
         /// <summary>
         /// errDiv control.
@@ -69,6 +69,15 @@ namespace TestWebAppNet2
         protected global::System.Web.UI.WebControls.Button btnAdd;
 
         /// <summary>
+        /// btnEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEdit;
+
+        /// <summary>
         /// tbxSearch control.
         /// </summary>
         /// <remarks>
@@ -78,13 +87,13 @@ namespace TestWebAppNet2
         protected global::System.Web.UI.WebControls.TextBox tbxSearch;
 
         /// <summary>
-        /// btnEdit control.
+        /// rfvSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEdit;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSearch;
 
         /// <summary>
         /// trUserId control.
@@ -123,6 +132,15 @@ namespace TestWebAppNet2
         protected global::System.Web.UI.WebControls.TextBox tbxUserName;
 
         /// <summary>
+        /// rfvUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUserName;
+
+        /// <summary>
         /// trFirstName control.
         /// </summary>
         /// <remarks>
@@ -139,6 +157,15 @@ namespace TestWebAppNet2
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxFirstName;
+
+        /// <summary>
+        /// rfvFirstName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFirstName;
 
         /// <summary>
         /// trSurName control.
@@ -159,6 +186,15 @@ namespace TestWebAppNet2
         protected global::System.Web.UI.WebControls.TextBox tbxSurName;
 
         /// <summary>
+        /// rfvSurName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSurName;
+
+        /// <summary>
         /// trAddressType control.
         /// </summary>
         /// <remarks>
@@ -175,6 +211,15 @@ namespace TestWebAppNet2
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlAddressType;
+
+        /// <summary>
+        /// rfvAddressType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAddressType;
 
         /// <summary>
         /// trStreetAddress control.

@@ -6,7 +6,7 @@
 
     <div class="jumbotron">
         <h1>Awesome Title Goes Here!</h1>
-        <p id=feedback runat="server" class="lead">This website uses cookies... Deal with it!</p>
+        <p id=feedback runat="server" class="lead">This website uses cookies... Deal with it! :p</p>
         <%--<p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>--%>
     </div>
 

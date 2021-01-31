@@ -90,14 +90,10 @@ namespace TestWebAppNet2.Data
                     command.Parameters.Add(DBConnection.GetNewParameter("@p_user_id", userId));
                     command.ExecuteNonQuery();
 
-                    //try
-                    //{
-                    total = float.Parse(command.Parameters["@RETURN_VALUE"].Value.ToString());//command.ExecuteScalar().ToString()
-                    //}
-                    //catch (Exception)
-                    //{
-
-                    //}
+                    if(!float.TryParse(command.Parameters["@RETURN_VALUE"].Value.ToString(), out total))//command.ExecuteScalar().ToString()
+                    {
+                        total = 0f;
+                    }
                 }
             }
             return total;

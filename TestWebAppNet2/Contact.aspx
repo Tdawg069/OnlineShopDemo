@@ -1,10 +1,12 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="TestWebAppNet2.Contact" %>
+﻿<%@ Page Title="Contact Me" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="TestWebAppNet2.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:HiddenField ID="hfUserId" runat="server" />
 
-    <h2><%: Title %>.</h2>
-    <h3>My contact details:</h3>
+    <div class="jumbotron">
+        <h2><%: Title %></h2>
+        <h3>My contact details:</h3>
+    </div>
     <address>
         Somewhere in Durban<br />
         KZN<br />

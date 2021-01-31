@@ -38,18 +38,18 @@ namespace TestWebAppNet2
                 }
                 catch (Exception ex)
                 {
-                    //errDiv.InnerHtml = ex.Message;
+                    //errDiv.InnerText = ex.Message;
                 }
             }
             else
             {
-                errDiv.InnerHtml = "Please login first!";
+                errDiv.InnerText = "Please login first!";
             }
         }
 
         protected void lbRemoveFromCart_Click(object sender, EventArgs e)
         {
-            errDiv.InnerHtml = "";
+            errDiv.InnerText = "";
             try
             {
                 string selectedProductId = (sender as LinkButton).CommandArgument.ToString();
@@ -65,22 +65,31 @@ namespace TestWebAppNet2
                 hfTotal.Value = UserBasketController.GetTotalForUser(uid).ToString();
                 divTotalCost.InnerText = "Total Cost: R " + hfTotal.Value;
 
-                errDiv.InnerHtml = "Item removed.";
+                errDiv.InnerText = "Item removed.";
             }
             catch (Exception ex)
             {
-                errDiv.InnerHtml = ex.Message;
+                errDiv.InnerText = ex.Message;
             }
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)
         {
-            errDiv.InnerHtml = "";
+            errDiv.InnerText = "";
             string userId = hfUserId?.Value ?? Session["user_id"]?.ToString();
             if (!string.IsNullOrWhiteSpace(userId))
             {
+                if (float.Parse(hfTotal.Value) == 0f)
+                {
+                    errDiv.InnerText = "No items to checkout.";
+                    return;
+                }
                 UserBasketController.DeleteAllForUser(int.Parse(userId));
                 Response.Redirect("~/?checkout=true&uid=" + userId, true);
+            }
+            else
+            {
+                errDiv.InnerText = "Please login first!";
             }
         }
 

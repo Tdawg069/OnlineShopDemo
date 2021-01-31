@@ -105,6 +105,12 @@ namespace TestWebAppNet2
         protected void btnSave_Click(object sender, EventArgs e)
         {
             errDiv.InnerText = "";
+            if (string.IsNullOrWhiteSpace(hfFunction.Value))
+            {
+                errDiv.InnerText = "Please select Add or Edit User";
+                return;
+            }
+
             Users user = GetFormData();
             if (string.IsNullOrWhiteSpace(tbxUserName.Text) ||
                 string.IsNullOrWhiteSpace(tbxFirstName.Text) ||
@@ -114,13 +120,17 @@ namespace TestWebAppNet2
                 return;
             }
 
-            if ("ADD".Equals(hfFunction.Value))
+            if ("ADD".Equals(hfFunction.Value) && string.IsNullOrWhiteSpace(hfUserId.Value))
             {
                 UserController.SaveNewUser(user);
             }
-            else if ("EDIT".Equals(hfFunction.Value))
+            else if ("EDIT".Equals(hfFunction.Value) && !string.IsNullOrWhiteSpace(hfUserId.Value))
             {
                 UserController.UpdateUser(user);
+            }
+            else
+            {
+                errDiv.InnerText = "Please select Add or Edit";
             }
             errDiv.InnerText = "User Data Saved.";
         }
